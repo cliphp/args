@@ -1,0 +1,34 @@
+{
+    "name": "cliphp/args",
+    "description": "Command line arguments",
+    "version": "0.0.1",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Clint Tyler",
+            "email": "ctyler@cdtwebsolutions.com"
+        }
+    ],
+    "keywords": ["cliphp", "cli", "args", "php7"],
+    "homepage": "https://github.com/cliphp/args",
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "2.*",
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cliphp\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cliphp\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    }
+}
