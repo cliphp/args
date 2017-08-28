@@ -63,6 +63,16 @@ class Args
     }
 
     /**
+     * Get count of arguments.
+     *
+     * @return int
+     */
+    public function count(): int
+    {
+        return count($this->args);
+    }
+
+    /**
      * Parse arguments and return an associative array.
      *
      * Note: Script name will be removed from the argument list
