@@ -1,4 +1,5 @@
 # cliphp/args
+[![Build Status](https://travis-ci.org/cliphp/args.svg?branch=master)](https://travis-ci.org/cliphp/args)
 
 Library for command line arguments.
 
