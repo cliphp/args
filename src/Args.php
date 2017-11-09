@@ -7,7 +7,7 @@ namespace Cliphp;
  *
  * @package Cliphp
  */
-class Args
+class Args implements \Countable
 {
     /**
      * Maximum amount of iterations to perform on CLI arguments
@@ -29,7 +29,7 @@ class Args
     }
 
     /**
-     * Returns value of argument.
+     * Returns value of an argument.
      *
      * @param string $arg
      *
