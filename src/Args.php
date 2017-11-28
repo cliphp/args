@@ -82,18 +82,19 @@ class Args implements \Countable
     protected function parseArgs(): array
     {
         global $argc, $argv;
+        $argvCopy = $argv;
 
         if ($argc > 1) {
             // Shift script name from $argv
-            array_shift($argv);
+            array_shift($argvCopy);
         }
 
         $i = 0;
         $args = [];
-        while ($i < self::MAX_ARGS && isset($argv[$i])) {
+        while ($i < self::MAX_ARGS && isset($argvCopy[$i])) {
             // Set current and next argument values
-            $current = $argv[$i];
-            $next = $argv[$i + 1] ?? null;
+            $current = $argvCopy[$i];
+            $next = $argvCopy[$i + 1] ?? null;
 
             // If the current argument starts with -
             if (preg_match('/^-+(.+)$/', $current, $matches) === 1) {
