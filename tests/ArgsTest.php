@@ -40,5 +40,9 @@ class ArgsTest extends TestCase
 
         // assert that missing argument is null
         $this->assertNull($args->get('missing'));
+
+        // assert that args are identical when class is initialized more than once
+	    $args2 = new Args();
+	    $this->assertEquals($args->all(), $args2->all());
     }
 }
