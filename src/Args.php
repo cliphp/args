@@ -81,13 +81,11 @@ class Args implements \Countable
      */
     protected function parseArgs(): array
     {
-        global $argc, $argv;
+        global $argv;
         $argvCopy = $argv;
 
-        if ($argc > 1) {
-            // Shift script name from $argv
-            array_shift($argvCopy);
-        }
+        // Shift script name from args
+        array_shift($argvCopy);
 
         $i = 0;
         $args = [];
