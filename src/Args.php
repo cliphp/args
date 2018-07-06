@@ -7,7 +7,7 @@ namespace Cliphp;
  *
  * @package Cliphp
  */
-class Args implements \Countable
+class Args implements \Countable, \ArrayAccess
 {
     /**
      * Maximum amount of iterations to perform on CLI arguments
@@ -26,50 +26,6 @@ class Args implements \Countable
     {
         // Parse the CLI arguments
         $this->args = $this->parseArgs();
-    }
-
-    /**
-     * Returns value of an argument.
-     *
-     * @param string $arg
-     *
-     * @return mixed|null
-     */
-    public function get(string $arg)
-    {
-        return $this->args[$arg] ?? null;
-    }
-
-    /**
-     * Checks for existence of an argument.
-     *
-     * @param string $arg
-     *
-     * @return boolean
-     */
-    public function has(string $arg): bool
-    {
-        return isset($this->args[$arg]);
-    }
-
-    /**
-     * Get all of the arguments.
-     *
-     * @return array
-     */
-    public function all(): array
-    {
-        return $this->args;
-    }
-
-    /**
-     * Get count of arguments.
-     *
-     * @return int
-     */
-    public function count(): int
-    {
-        return count($this->args);
     }
 
     /**
@@ -117,5 +73,66 @@ class Args implements \Countable
         }
 
         return $args;
+    }
+
+    /**
+     * Returns value of an argument.
+     *
+     * @param string $arg
+     * @return mixed|null
+     */
+    public function get(string $arg)
+    {
+        return $this->args[$arg] ?? null;
+    }
+
+    /**
+     * Checks for existence of an argument.
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function has(string $arg): bool
+    {
+        return isset($this->args[$arg]);
+    }
+
+    /**
+     * @return array
+     */
+    public function all(): array
+    {
+        return $this->args;
+    }
+
+    ///////////////////////////////////
+    // Countable
+
+    public function count(): int
+    {
+        return count($this->args);
+    }
+
+    ///////////////////////////////////
+    // ArrayAccess
+
+    public function offsetExists($offset)
+    {
+        return $this->has($offset);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->get($offset);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->args[$offset] = $value;
+    }
+
+    public function offsetUnset($offset)
+    {
+        unset($this->args[$offset]);
     }
 }
